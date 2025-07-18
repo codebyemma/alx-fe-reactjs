@@ -1,13 +1,7 @@
-import React from 'react';
-import UserDetails from './UserDetails';
+import UserInfo from './UserInfo'; // This component will show nested user info
 
 function ProfilePage() {
-  return (
-    <div>
-      <h2>Profile</h2>
-      <UserDetails />
-    </div>
-  );
+  return <UserInfo />; // No need to pass props anymore
 }
 
-export default ProfilePage;
+export default ProfilePage;;
