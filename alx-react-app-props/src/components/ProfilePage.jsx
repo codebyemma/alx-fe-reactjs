@@ -1,10 +1,13 @@
-import React, { useContext } from 'react';
-import { UserContext } from './UserContext';
-import UserInfo from './UserInfo';
+import React from 'react';
+import UserDetails from './UserDetails';
 
 function ProfilePage() {
-	 const userData = useContext(UserContext);
-  return <UserInfo />;
+  return (
+    <div>
+      <h2>Profile</h2>
+      <UserDetails />
+    </div>
+  );
 }
 
 export default ProfilePage;
