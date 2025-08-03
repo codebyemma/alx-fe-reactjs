@@ -1,4 +1,4 @@
-import useRecipeStore from '../store/recipeStore';
+import useRecipeStore from './recipeStore';
 import { BrowserRouter as Router, useParams, Link } from 'react-router-dom';
 
   const RecipeDetails = () => {
