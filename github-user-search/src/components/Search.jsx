@@ -35,9 +35,9 @@ const Search = () => {
             {user.error && <div>{user.error}</div>}
             {user.name && (
                 <div>
-                    <img src={user.img} alt="profile image"/>
+                    <img src={user.avatar_url} alt="profile image"/>
                     <h2>{user.name || "no name"}</h2>
-                    <a href={user.profile}>github link</a>
+                    <a href={user.html_url}>github link</a>
                 </div>
             )}
         </div>
