@@ -1,18 +1,25 @@
-import Githubstore from "../stores/Githubstore"
-import { useState } from "react"
+import Githubstore from "../stores/Githubstore";
+import { useState, useEffect } from "react";
+import fetchUserData from "../services/githubService";
 
 const Search = () => {
     const setsearch = Githubstore(state => state.setSearch);
     const user = Githubstore(state => state.user);
+    const searchValue = Githubstore(state => state.searching);
+    const setDetails = Githubstore(state => state.setDetails);
     const [search, setsearching] = useState('');
 
+    useEffect(() => {
+        fetchUserData(searchValue, setDetails);
+    }, [searchValue, setDetails]);
+
     const handleChange = (e) => {
-        setsearching(e.target.value)
-    }
+        setsearching(e.target.value);
+    };
     const handleSubmit = (e) => {
         e.preventDefault();
         setsearch(search);
-    }
+    };
 
     return (
         <div>
@@ -34,7 +41,7 @@ const Search = () => {
                 </div>
             )}
         </div>
-    )
+    );
 };
 
 export default Search;
