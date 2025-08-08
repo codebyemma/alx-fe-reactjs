@@ -1,8 +1,9 @@
 import axios from "axios";
 import Githubstore from "../stores/Githubstore";
 
-function fetchUserData(search, setDetails) {
-  //const setDetails = Githubstore(state => state.setDetails);
+function fetchUserData() {
+  const search = Githubstore.getState().searching;
+  const setDetails = Githubstore.getState().setDetails;
   if (!search) return;
 
   setDetails("", "", "", true, null); // loading true

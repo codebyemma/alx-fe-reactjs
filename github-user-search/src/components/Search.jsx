@@ -10,7 +10,7 @@ const Search = () => {
     const [search, setsearching] = useState('');
 
     useEffect(() => {
-        fetchUserData(searchValue, setDetails);
+        fetchUserData();
     }, [searchValue, setDetails]);
 
     const handleChange = (e) => {
