@@ -1,34 +1,35 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import Githubstore from "../stores/Githubstore";
 
-function fetchUserData() {
-  const search = Githubstore(state => state.searching); // ✅ correct key
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [data, setData] = useState(null); // Default to null
+// ✅ React component to trigger API call based on store's "search" value
+function FetchUserData() {
+  const search = Githubstore((state) => state.searching);
   const setDetails = Githubstore((state) => state.setDetails);
 
   useEffect(() => {
-    if (!search) return; // Do nothing if search is empty
+    if (!search) return;
 
     const fetchData = async () => {
       try {
-        setLoading(true);
+        setDetails("", "", "", true, null); // loading true
         const response = await axios.get(`https://api.github.com/users/${search}`);
-        setData(response.data);
-	setDetails(data.name, data.avatar_url, data.html_url)
-        setError(null);
+        setDetails(
+          response.data.name,
+          response.data.avatar_url,
+          response.data.html_url,
+          false,
+          null
+        );
       } catch (err) {
-        setError("Looks like we can't find the user");
-        setData(null);
-      } finally {
-        setLoading(false);
+        setDetails("", "", "", false, "Looks like we can't find the user");
       }
     };
 
     fetchData();
-  }, [search]);
-};
+  }, [search, setDetails]);
 
-export default fetchUserData;
+  return null; // No visible output; just handles fetching
+}
+
+export default FetchUserData;
