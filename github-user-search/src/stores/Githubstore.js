@@ -1,8 +1,11 @@
 import { create } from 'zustand';
 
 const Githubstore = create((set) => ({
+    user: {name: '', img: '', profile: '',},
     searching: '',
-    setSearch: (search) => set({searching : search})
+    setDetails: (name, img, profile) =>
+	set({user: {name, img, profile}}),
+    setSearch: (search) => set({searching : search}),
 }));
 
 export default Githubstore;
