@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Search from './components/search'
 import FetchUserData from './services/githubService'
 
-
 function App() {
   const [count, setCount] = useState(0)
 
