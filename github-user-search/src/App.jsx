@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import Search from './components/search'
+import Search from './components/Search'
 //import UserData from './components/userData'
 //import fetchUserData from './services/githubService'
 //import FetchUserData from "./services/githubService";
