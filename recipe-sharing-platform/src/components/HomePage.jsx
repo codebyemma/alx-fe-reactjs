@@ -1,13 +1,32 @@
 // HomePage.jsx
-import React, { useState } from 'react';
-import recipes from '../data.json'; // ✅ Import JSON as a JS object
+import React, { useState, useEffect } from 'react';
+import recipesData from '../data.json'; // Import the data
 
 const HomePage = () => {
-  const [loading, setLoading] = useState(false);
+  const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Since it's imported, data is available immediately
-  if (loading) return <p className="text-center">Loading...</p>;
+  useEffect(() => {
+    // Simulate async loading (e.g., like a real API)
+    const loadRecipes = async () => {
+      try {
+        // Optional: add a small delay to simulate network wait
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        // Since the import is synchronous, we can just set it
+        setRecipes(recipesData);
+      } catch (err) {
+        setError('Failed to load recipes');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadRecipes();
+  }, []); // Empty dependency array = runs once on mount
+
+  if (loading) return <p className="text-center text-lg">Loading recipes...</p>;
   if (error) return <p className="text-center text-red-500">Error: {error}</p>;
 
   return (
