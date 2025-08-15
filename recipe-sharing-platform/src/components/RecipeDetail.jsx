@@ -7,6 +7,8 @@ const RecipeDetail = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [ ingredients, setIngredients ] = useState("");
+  const [ instructions, setInstructions ] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,6 +41,8 @@ const RecipeDetail = () => {
       <h2 className="text-xl font-semibold py-8 text-blue-500">{data.title}</h2>
       <img className="w-40 h-40 object-cover rounded-full shadow-lg mx-auto my-auto" src={data.image} alt="recipe image" />
       <p className="text-base my-4">{data.summary}</p>
+      <p>{ingredients}</p>
+      <p>{instructions}</p>
     </div>
   );
 };
