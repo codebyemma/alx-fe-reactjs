@@ -6,6 +6,7 @@ const AddRecipeForm = () => {
     const [summary, setSummary] = useState('');
     const [ingredients, setIngredients] = useState('');
     const [preparation, setPreparation] = useState('');
+    const [steps, setSteps] = useState('');
     const [recipes, setRecipes] = useState(recipesData);
     const [errors, setErrors] = useState({});
 
@@ -20,6 +21,7 @@ const AddRecipeForm = () => {
             if (word.length < 2) newError.ingredients = "At least two ingredients are required";
         }
         if (!preparation.trim()) newError.preparation = "Preparation is required";
+        if (!steps.trim()) newError.steps = "Steps are required";
         return newError;
     };
 
@@ -36,13 +38,15 @@ const AddRecipeForm = () => {
             summary,
             image: "https://via.placeholder.com/150",
             ingredients,
-            preparation
+            preparation,
+            steps
         };
         setRecipes([...recipes, newRecipe]);
         setTitle('');
         setSummary('');
         setIngredients('');
         setPreparation('');
+        setSteps('');
         setErrors({});
     };
 
@@ -81,6 +85,14 @@ const AddRecipeForm = () => {
                     onChange={(e) => setPreparation(e.target.value)}
                 />
                 {errors.preparation && <div style={{color: 'red'}}>{errors.preparation}</div>}
+            </div>
+            <div>
+                <textarea
+                    value={steps}
+                    placeholder="Steps"
+                    onChange={(e) => setSteps(e.target.value)}
+                />
+                {errors.steps && <div style={{color: 'red'}}>{errors.steps}</div>}
             </div>
             <button type="submit">Submit</button>
         </form>
