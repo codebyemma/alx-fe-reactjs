@@ -18,9 +18,11 @@ const PostsComponent = () => {
     return (
         <div>
             {data.map((dat) => {
-                <div 
-            }
-            )}
+                <div key={dat.id}>
+                    <h3>{dat.title}</h3>
+                    <p>{dat.body}</p>
+                </div>
+            })}
         </div>
     )
 }
